@@ -1,50 +1,80 @@
-# Welcome to your Expo app 👋
+# 📱 Smart Notes App — Panduan Setup
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
-
-## Get started
-
-1. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+## Struktur File Project
+```
+SmartNotes/
+├── App.js
+└── screens/
+    ├── InspirasiScreen.js
+    └── CatatankuScreen.js
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+## 🚀 Langkah-Langkah Menjalankan Project
 
-To learn more about developing your project with Expo, look at the following resources:
+### 1. Buat Project Expo Baru
+Buka terminal, lalu jalankan:
+```bash
+npx create-expo-app SmartNotes
+cd SmartNotes
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### 2. Install Library yang Dibutuhkan
+```bash
+# React Navigation (Bottom Tabs)
+npm install @react-navigation/native @react-navigation/bottom-tabs
 
-## Join the community
+# Dependencies React Navigation
+npx expo install react-native-screens react-native-safe-area-context
 
-Join our community of developers creating universal apps.
+# AsyncStorage
+npx expo install @react-native-async-storage/async-storage
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### 3. Salin File Kode
+- Ganti isi `App.js` dengan file `App.js` yang sudah disiapkan
+- Buat folder `screens/` di dalam folder project
+- Salin `InspirasiScreen.js` dan `CatatankuScreen.js` ke dalam folder `screens/`
+
+### 4. Jalankan Aplikasi
+```bash
+npx expo start
+```
+Scan QR code menggunakan aplikasi **Expo Go** di HP kamu.
+
+---
+
+## ✅ Fitur yang Ada
+
+### Tab 1 — Halaman Inspirasi ✨
+- Otomatis mengambil quote acak saat pertama dibuka
+- Tombol "Cari Inspirasi Lain" untuk refresh quote
+- **[BONUS]** Tombol "Simpan ke Catatanku" — menyimpan quote ke AsyncStorage
+
+### Tab 2 — Halaman Catatanku 📝
+- TextInput multiline untuk menulis catatan panjang
+- Tombol "Simpan Catatan" — menyimpan ke memori HP (AsyncStorage)
+- Catatan otomatis muncul kembali saat halaman dibuka
+- Tombol hapus catatan
+- Catatan TIDAK HILANG meski aplikasi ditutup paksa
+
+---
+
+## 🧪 Cara Test AsyncStorage
+1. Buka Tab "Catatanku"
+2. Ketik catatan panjang
+3. Tekan "Simpan Catatan"
+4. **Force close** aplikasi Expo Go
+5. Buka lagi → catatan masih ada ✅
+
+---
+
+## 📊 Pemenuhan Rubrik Penilaian
+| Kriteria | Status |
+|---|---|
+| Slicing UI & Navigasi (25%) | ✅ Bottom Tabs + desain kartu |
+| Fetch API (25%) | ✅ dummyjson.com/quotes/random |
+| AsyncStorage Logic (40%) | ✅ setItem + getItem + useEffect |
+| Kerapian Kode (10%) | ✅ File dipisah, variabel jelas |
+| **BONUS** Simpan ke Catatanku | ✅ Ada di halaman Inspirasi |
